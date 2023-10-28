@@ -105,7 +105,31 @@ namespace ParkingCarManager
 
         private static void executeQuery(string ps, string command)
         {
+            string sqlcommand = "";
+            if (command.Equals("insert"))
+                sqlcommand = "insert into parkingManager(parkingspot) values (@p1)";
+            else
+                sqlcommand = "delete from parkingManager where pakringSpot = @p1";
 
+            try
+            {
+                ConnectDB();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.AddWithValue("@p1", ps);
+                cmd.CommandText=sqlcommand;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(command);
+                DataManager.printLog(command + "," +ex.Message+","+ex.StackTrace);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
 
         public static void deleteQuery(string ps)
@@ -117,6 +141,5 @@ namespace ParkingCarManager
         {
             executeQuery(ps, "insert");
         }
-
     }
 }
