@@ -1,0 +1,9 @@
+table 이름 : parkingManager
+스키마 이름(DB명) : MYDB
+ParkingSpot      nvarchar(50)        null 허용x ->기본키설정
+carNumber      nvarchar(50)        null 허용
+driveName      nvarchar(50)        null 허용
+phoneNumber      nvarchar(50)        null 허용
+ParkingTime      datetime        null 허용 
+
+ParkingTime 기본값 또는 바인딩을 getdate()
