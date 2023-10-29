@@ -157,7 +157,7 @@ namespace ParkingCarManager
             string contents = "";
             if (parkingCar.Trim() != "")
             {
-                contents = $"주차공간 {ps}에 주차된 차는 {parkingCar}입니다."
+                contents = $"주차공간 {ps}에 주차된 차는 {parkingCar}입니다.";
             }
             else
                 contents = $"주차공간 {ps}에 차가 없습니다.";
